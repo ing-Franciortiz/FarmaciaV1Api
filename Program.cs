@@ -1,4 +1,5 @@
 using FarmaciaV1Api.Data;
+using FarmaciaV1Api.Modules.Medicamentos;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddDbContext<FarmaciaDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddMedicamentosModule();
 
 var app = builder.Build();
 
